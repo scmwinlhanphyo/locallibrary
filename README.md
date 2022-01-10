@@ -39,3 +39,17 @@
 
 ## Run Django Test Code
 python manage.py test catalog.tests
+
+# Change My SQL Username and password
+dir => locallibrary/settings.py
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'locallibrary',
+        'USER': 'admin', <= change mysql username
+        'PASSWORD': 'root', <= change mysql password
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
