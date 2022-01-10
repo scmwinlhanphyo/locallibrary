@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/author-list.css' %}">
+<h1>Author List</h1>
+<div class="author-create-btn-container">
+  <a class="author-create-link" href="{% url 'author-create' %}">Create Author</a>
+</div>
+<ul>
+  {% for author in author_list %}
+  <li>
+    <a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a> ({{author.date_of_birth}} - {{author.date_of_death}})
+    <a class="author-create-link" href="{% url 'author-update' author.id %}">Edit</a>
+    <a class="author-create-link" href="{% url 'author-delete' author.id %}">Delete</a>
+  </li>
+  {% empty %}
+    <p>There are no author books in the library.</p>
+  {% endfor %}
+</ul>
+{% endblock %}
